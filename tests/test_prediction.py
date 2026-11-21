@@ -79,3 +79,6 @@ def test_select_threshold_fallback_to_f1(splits):
 def test_train_rejects_empty_or_mismatched(splits):
     with pytest.raises(ValueError, match="même longueur"):
         train_model(splits[0].head(10), splits[3].head(5))
+
+def test_echec_volontaire():
+    assert False, "Échec volontaire pour démontrer la détection par la CI"
