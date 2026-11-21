@@ -1,0 +1,149 @@
+{
+  "source": "Kaggle creditcard.csv",
+  "seed": 42,
+  "min_recall_target": 0.8,
+  "models": {
+    "logreg": {
+      "threshold": 0.9881118661399669,
+      "train": {
+        "accuracy": 0.9986599018041584,
+        "precision": 0.5767441860465117,
+        "recall": 0.8406779661016949,
+        "f1": 0.6841379310344827,
+        "roc_auc": 0.9926287163084574,
+        "pr_auc": 0.773755173086261,
+        "fpr": 0.0010668980233076184,
+        "fnr": 0.15932203389830507,
+        "tp": 248,
+        "tn": 170406,
+        "fp": 182,
+        "fn": 47
+      },
+      "validation": {
+        "accuracy": 0.9984375548611355,
+        "precision": 0.5333333333333333,
+        "recall": 0.8080808080808081,
+        "f1": 0.642570281124498,
+        "roc_auc": 0.9745743668505393,
+        "pr_auc": 0.6833630451501473,
+        "fpr": 0.0012310289643529184,
+        "fnr": 0.1919191919191919,
+        "tp": 80,
+        "tn": 56793,
+        "fp": 70,
+        "fn": 19
+      },
+      "test": {
+        "accuracy": 0.9985077771145676,
+        "precision": 0.5419354838709678,
+        "recall": 0.8571428571428571,
+        "f1": 0.6640316205533597,
+        "roc_auc": 0.9725264648628162,
+        "pr_auc": 0.719131696131346,
+        "fpr": 0.0012485931344963421,
+        "fnr": 0.14285714285714285,
+        "tp": 84,
+        "tn": 56793,
+        "fp": 71,
+        "fn": 14
+      }
+    },
+    "tree": {
+      "threshold": 0.911229855115296,
+      "train": {
+        "accuracy": 0.9930595787761217,
+        "precision": 0.18997912317327767,
+        "recall": 0.9254237288135593,
+        "f1": 0.31524249422632794,
+        "roc_auc": 0.99015610214401,
+        "pr_auc": 0.7578794708698182,
+        "fpr": 0.006823457687527845,
+        "fnr": 0.07457627118644068,
+        "tp": 273,
+        "tn": 169424,
+        "fp": 1164,
+        "fn": 22
+      },
+      "validation": {
+        "accuracy": 0.993153330290369,
+        "precision": 0.17880794701986755,
+        "recall": 0.8181818181818182,
+        "f1": 0.29347826086956524,
+        "roc_auc": 0.8804375997102374,
+        "pr_auc": 0.6485645479460374,
+        "fpr": 0.0065420396391326525,
+        "fnr": 0.18181818181818182,
+        "tp": 81,
+        "tn": 56491,
+        "fp": 372,
+        "fn": 18
+      },
+      "test": {
+        "accuracy": 0.9926617745163442,
+        "precision": 0.17346938775510204,
+        "recall": 0.8673469387755102,
+        "f1": 0.2891156462585034,
+        "roc_auc": 0.917166038123184,
+        "pr_auc": 0.6890432386490796,
+        "fpr": 0.007122256612267867,
+        "fnr": 0.1326530612244898,
+        "tp": 85,
+        "tn": 56459,
+        "fp": 405,
+        "fn": 13
+      }
+    }
+  },
+  "robustness": [
+    {
+      "scenario": "Bruit multiplicatif 5 % sur Amount",
+      "mean_abs_dproba": 0.002492482072333909,
+      "class_flip_rate": 0.00024577788701239423,
+      "d_recall": 0.0,
+      "d_precision": -0.032844574780058755,
+      "d_fpr": 0.00017585818795723125,
+      "alert_rate": 0.0028966679540746464
+    },
+    {
+      "scenario": "Bruit gaussien \u03c3=0,1 sur V1..V28",
+      "mean_abs_dproba": 0.01586671395670862,
+      "class_flip_rate": 0.0002106667602963379,
+      "d_recall": 0.0,
+      "d_precision": -0.026598060558084335,
+      "d_fpr": 0.00014068655036578517,
+      "alert_rate": 0.00286155682735859
+    },
+    {
+      "scenario": "Amount \u00d7 100 (valeurs extr\u00eames)",
+      "mean_abs_dproba": 0.7422243091904188,
+      "class_flip_rate": 0.7061725360766827,
+      "d_recall": 0.08163265306122458,
+      "d_precision": -0.539657128249373,
+      "d_fpr": 0.7072488745075971,
+      "alert_rate": 0.7088936483971771
+    },
+    {
+      "scenario": "D\u00e9calage +1,5 sur V1..V14 (changement de distribution)",
+      "mean_abs_dproba": 0.062315255005654366,
+      "class_flip_rate": 0.00066711140760507,
+      "d_recall": -0.020408163265306034,
+      "d_precision": 0.158919216983733,
+      "d_fpr": -0.0006330894766460326,
+      "alert_rate": 0.002054000912889295
+    }
+  ],
+  "invalid_inputs": {
+    "NaN dans V5": "rejet\u00e9 : ValueError",
+    "Inf dans Amount": "rejet\u00e9 : ValueError",
+    "Colonne V7 absente": "rejet\u00e9 : ValueError",
+    "Type texte dans V2": "rejet\u00e9 : TypeError"
+  },
+  "performance": {
+    "p50_ms": 1.887249993160367,
+    "p95_ms": 2.4373349908273667,
+    "throughput_per_s_batch1000": 496179.4235425586,
+    "model_size_kb": 3.466796875,
+    "rss_mb": 352.677888,
+    "protocole": "300 pr\u00e9dictions isol\u00e9es apr\u00e8s \u00e9chauffement, lot de 1000, time.perf_counter, 1 processus"
+  }
+}

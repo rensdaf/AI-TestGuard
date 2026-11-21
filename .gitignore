@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+.hypothesis/
+.coverage
+coverage.xml
+htmlcov/
+*.joblib
+models/
+data/*.csv
+.env
+.venv/
